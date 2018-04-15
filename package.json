@@ -1,0 +1,54 @@
+{
+  "name": "zenjs",
+  "version": "0.1.0",
+  "description": "A modern JavaScript utility library",
+  "main": "./dist/zen.common.js",
+  "module": "./dist/zen.esm.js",
+  "browser": "./dist/zen.browser.js",
+  "scripts": {
+    "dev": "rollup -c -w",
+    "build": "rollup -c",
+    "test": "jest",
+    "commit": "git-cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/liuxing/zen.git"
+  },
+  "keywords": [
+    "zen",
+    "util",
+    "utilities",
+    "functional",
+    "javascript"
+  ],
+  "author": "Liu Xing",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/liuxing/zen/issues"
+  },
+  "homepage": "https://github.com/liuxing/zen#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.4.3",
+    "babel-preset-env": "^1.6.1",
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.1.0",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "jest": "^22.4.3",
+    "rollup": "^0.57.1",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-replace": "^2.0.0",
+    "rollup-plugin-uglify": "^3.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
