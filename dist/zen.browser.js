@@ -101,12 +101,77 @@
     return '#' + hex;
   }
 
+  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+  /**
+   * Returns a string indicating the type of the `obj`
+   *
+   * @param {any} obj The value to query.
+   * @returns {string} Returns the type of the `obj`
+   */
+  function type(obj) {
+    var class2type = {};
+    var types = ['Boolean', 'String', 'Number', 'Array', 'Object', 'Function', 'Date', 'RegExp', 'Error', 'Null', 'Undefined', 'Arguments', 'Symbol', 'Map', 'WeakMap', 'Set', 'WeakSet'];
+    types.map(function (name) {
+      class2type['[object ' + name + ']'] = name.toLowerCase();
+    });
+    return (typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) === 'object' || typeof obj === 'function' ? class2type[Object.prototype.toString.call(obj)] || 'object' : typeof obj === 'undefined' ? 'undefined' : _typeof(obj);
+  }
+
+  /**
+   * Checks if `value` is a plain object
+   *
+   * @param {any} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is a DOM element, else `false`.
+   */
+  function isPlainObject(value) {
+    if (!value && type(value !== 'object')) {
+      return false;
+    }
+    if (Object.getPrototypeOf(value) === null) {
+      return true;
+    }
+    var proto = Object.getPrototypeOf(value);
+    if (proto === null) {
+      return true;
+    }
+    var Ctor = Object.prototype.hasOwnProperty.call(proto, 'constructor') && proto.constructor;
+    return typeof Ctor === 'function' && Ctor instanceof Ctor && Function.prototype.toString.call(Ctor) === Function.prototype.toString.call(Object);
+  }
+
+  /**
+   * Checks if `value` is likely a DOM element.
+   *
+   * @param {any} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is a DOM element, else `false`.
+   */
+  function isElement(value) {
+    return value && value.nodeType === 1;
+  }
+
+  /**
+   * Checks if `value` is an empty.
+   *
+   * @param {any} value The value to check.
+   * @returns {boolean} Returns `true` if `value` empty, else `false`.
+   */
+  function isEmpty(value) {
+    for (var key in value) {
+      return false;
+    }
+    return true;
+  }
+
   var index = {
     version: '0.1.0',
     random: random,
     range: range,
     randomColor: randomColor,
-    randomString: randomString
+    randomString: randomString,
+    type: type,
+    isPlainObject: isPlainObject,
+    isElement: isElement,
+    isEmpty: isEmpty
   };
 
   return index;
